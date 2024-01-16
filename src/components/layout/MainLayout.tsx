@@ -20,20 +20,24 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const items: MenuProps["items"] = [
   {
-    key: "dashboard",
-    label: <NavLink to={"/admin"}>Dashboard</NavLink>,
+    key: "Dashboard",
+    label: <NavLink to={"dashboard"}>Dashboard</NavLink>,
+  },
+  {
+    key: "User Management",
+    label: "User Management",
     children: [
       {
-        key: "create-admin",
-        label: <NavLink to={"create-admin"}>create admin</NavLink>,
+        key: "Create-Admin",
+        label: <NavLink to={"create-admin"}>Create Admin</NavLink>,
       },
       {
-        key: "create-faculty",
-        label: <NavLink to={"create-faculty"}>create faculty</NavLink>,
+        key: "Create-Faculty",
+        label: <NavLink to={"create-faculty"}>Create Faculty</NavLink>,
       },
       {
-        key: "create-student",
-        label: <NavLink to={"create-student"}>create student</NavLink>,
+        key: "Create-Student",
+        label: <NavLink to={"/admin/create-student"}>Create Student</NavLink>,
       },
     ],
   },
