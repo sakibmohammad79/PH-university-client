@@ -27,20 +27,23 @@ const adminPaths2 = [
 ];
 
 const result = adminPaths2.reduce((acc, item) => {
-  if (item.path && item.element) {
+  if (item.path && item.name) {
     acc.push({
-      path: item.path,
-      element: item.element,
+      key: item.name,
+      label: item.path,
     });
   }
   if (item.children) {
-    item.children.forEach((child) => {
-      acc.push({
-        path: child.path,
-        element: child.element,
-      });
+    acc.push({
+      key: item.name,
+      label: item.name,
+      children: item.children.map((chiled) => ({
+        key: chiled.name,
+        label: chiled.path,
+      })),
     });
   }
+
   return acc;
 }, []);
 console.log(result);

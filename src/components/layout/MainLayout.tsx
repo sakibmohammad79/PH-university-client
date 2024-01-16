@@ -1,11 +1,12 @@
 import { Layout, Menu, MenuProps } from "antd";
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
-import { createElement } from "react";
+// import {
+//   UploadOutlined,
+//   UserOutlined,
+//   VideoCameraOutlined,
+// } from "@ant-design/icons";
+// import { createElement } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { adminSidebarItems } from "../../routes/admin.routes";
 const { Header, Content, Footer, Sider } = Layout;
 // const items = [
 //   UserOutlined,
@@ -18,30 +19,30 @@ const { Header, Content, Footer, Sider } = Layout;
 //   label: `nav ${index + 1}`,
 // }));
 
-const items: MenuProps["items"] = [
-  {
-    key: "Dashboard",
-    label: <NavLink to={"dashboard"}>Dashboard</NavLink>,
-  },
-  {
-    key: "User Management",
-    label: "User Management",
-    children: [
-      {
-        key: "Create-Admin",
-        label: <NavLink to={"create-admin"}>Create Admin</NavLink>,
-      },
-      {
-        key: "Create-Faculty",
-        label: <NavLink to={"create-faculty"}>Create Faculty</NavLink>,
-      },
-      {
-        key: "Create-Student",
-        label: <NavLink to={"/admin/create-student"}>Create Student</NavLink>,
-      },
-    ],
-  },
-];
+// const items: MenuProps["items"] = [
+//   {
+//     key: "Dashboard",
+//     label: <NavLink to={"dashboard"}>Dashboard</NavLink>,
+//   },
+//   {
+//     key: "User Management",
+//     label: "User Management",
+//     children: [
+//       {
+//         key: "Create-Admin",
+//         label: <NavLink to={"create-admin"}>Create Admin</NavLink>,
+//       },
+//       {
+//         key: "Create-Faculty",
+//         label: <NavLink to={"create-faculty"}>Create Faculty</NavLink>,
+//       },
+//       {
+//         key: "Create-Student",
+//         label: <NavLink to={"/admin/create-student"}>Create Student</NavLink>,
+//       },
+//     ],
+//   },
+// ];
 const MainLayout = () => {
   return (
     <Layout style={{ height: "100vh" }}>
@@ -72,7 +73,7 @@ const MainLayout = () => {
           theme="dark"
           mode="inline"
           defaultSelectedKeys={["4"]}
-          items={items}
+          items={adminSidebarItems}
         />
       </Sider>
       <Layout>
