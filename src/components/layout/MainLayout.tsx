@@ -5,7 +5,7 @@ import {
   VideoCameraOutlined,
 } from "@ant-design/icons";
 import { createElement } from "react";
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 // const items = [
 //   UserOutlined,
@@ -20,30 +20,22 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const items: MenuProps["items"] = [
   {
-    key: "1",
-    label: "dashboard",
-  },
-  {
-    key: "2",
-    label: "profile",
-  },
-  {
-    key: "3",
-    label: "dashboard",
+    key: "dashboard",
+    label: <NavLink to={"/admin"}>Dashboard</NavLink>,
     children: [
       {
-        key: "11",
-        label: "create admin",
+        key: "create-admin",
+        label: <NavLink to={"create-admin"}>create admin</NavLink>,
       },
       {
-        key: "12",
-        label: "create student",
+        key: "create-faculty",
+        label: <NavLink to={"create-faculty"}>create faculty</NavLink>,
+      },
+      {
+        key: "create-student",
+        label: <NavLink to={"create-student"}>create student</NavLink>,
       },
     ],
-  },
-  {
-    key: "4",
-    label: "dashboard",
   },
 ];
 const MainLayout = () => {
