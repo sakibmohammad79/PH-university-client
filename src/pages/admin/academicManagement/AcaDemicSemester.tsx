@@ -2,7 +2,7 @@ import { useGetAllSemestersQuery } from "../../../redux/features/academicSemeste
 
 const AcaDemicSemester = () => {
   const { data } = useGetAllSemestersQuery(undefined);
-  console.log(data);
+  console.log("data", data);
   return (
     <div>
       <h1>Academic Semesters</h1>
