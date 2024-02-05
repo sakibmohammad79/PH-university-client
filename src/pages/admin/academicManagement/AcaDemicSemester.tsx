@@ -1,17 +1,19 @@
 import { useGetAllAcademicSemestersQuery } from "../../../redux/features/admin/academicManagement.api";
-import { Table } from "antd";
+import { Button, Table } from "antd";
 import type { TableColumnsType, TableProps } from "antd";
 import { TAcademicSemester } from "../../../types/academicManagement.type";
 import { useState } from "react";
+import { TQueryParam } from "../../../types";
 
 export type TTableData = Pick<
   TAcademicSemester,
-  "_id" | "name" | "startMonth" | "endMonth" | "year"
+  "name" | "startMonth" | "endMonth" | "year"
 >;
 
 const AcademicSemester = () => {
-  const [params, setParams] = useState([]);
-  const { data: semesterData } = useGetAllAcademicSemestersQuery(params);
+  const [params, setParams] = useState<TQueryParam[] | undefined>(undefined);
+  const { data: semesterData, isFetching } =
+    useGetAllAcademicSemestersQuery(params);
 
   const tableData = semesterData?.data?.map(
     ({ _id, name, startMonth, endMonth, year }) => ({
@@ -85,28 +87,28 @@ const AcademicSemester = () => {
       title: "End Month",
       key: "endMonth",
       dataIndex: "endMonth",
-      // filters: [
-      //   {
-      //     text: "London",
-      //     value: "London",
-      //   },
-      //   {
-      //     text: "New York",
-      //     value: "New York",
-      //   },
-      // ],
-      // onFilter: (value: string, record) => record.address.indexOf(value) === 0,
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: () => {
+        return (
+          <div>
+            <Button>Update</Button>
+          </div>
+        );
+      },
     },
   ];
 
   const onChange: TableProps<TTableData>["onChange"] = (
-    pagination,
+    _pagination,
     filters,
-    sorter,
+    _sorter,
     extra
   ) => {
     if (extra.action == "filter") {
-      const queryParams: any = [];
+      const queryParams: TQueryParam[] = [];
 
       filters.name?.forEach((item) =>
         queryParams.push({ name: "name", value: item })
@@ -117,7 +119,15 @@ const AcademicSemester = () => {
       setParams(queryParams);
     }
   };
-  return <Table columns={columns} dataSource={tableData} onChange={onChange} />;
+
+  return (
+    <Table
+      loading={isFetching}
+      columns={columns}
+      dataSource={tableData}
+      onChange={onChange}
+    />
+  );
 };
 
 export default AcademicSemester;
