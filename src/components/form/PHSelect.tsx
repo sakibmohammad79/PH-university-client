@@ -14,7 +14,6 @@ const PHSelect = ({ name, label, options }: TselectProps) => {
       render={({ field, fieldState: { error } }) => (
         <Form.Item label={label}>
           <Select
-            // defaultValue="lucy"
             style={{ width: "100%" }}
             {...field}
             options={options}

@@ -8,6 +8,8 @@ import { useAddAcademicFacultyMutation } from "../../../redux/features/admin/aca
 import { toast } from "sonner";
 import { TResponse } from "../../../types";
 import { TAcademicFaculty } from "../../../types/academicManagement.type";
+import { academicFacultySchema } from "../../../schemas/academicFaculty.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const CreateAcademicFaculty = () => {
   const [addAcademicFaculty] = useAddAcademicFacultyMutation();
@@ -44,7 +46,10 @@ const CreateAcademicFaculty = () => {
   return (
     <Flex justify="center" align="center">
       <Col span={12}>
-        <PHForm onSubmit={onSubmit}>
+        <PHForm
+          onSubmit={onSubmit}
+          resolver={zodResolver(academicFacultySchema)}
+        >
           <PHSelect
             name="name"
             label="Faculty"
