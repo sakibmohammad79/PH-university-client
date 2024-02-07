@@ -1,15 +1,13 @@
 import { Button, Col, Flex } from "antd";
 import PHForm from "../../../components/form/PHForm";
-
-import PHSelect from "../../../components/form/PHSelect";
 import { FieldValues, SubmitHandler } from "react-hook-form";
-import { facultyOptions } from "../../../constants/faculty";
 import { useAddAcademicFacultyMutation } from "../../../redux/features/admin/academicManagement.api";
 import { toast } from "sonner";
 import { TResponse } from "../../../types";
 import { TAcademicFaculty } from "../../../types/academicManagement.type";
 import { academicFacultySchema } from "../../../schemas/academicFaculty.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import PHInput from "../../../components/form/PHInput";
 
 const CreateAcademicFaculty = () => {
   const [addAcademicFaculty] = useAddAcademicFacultyMutation();
@@ -50,11 +48,7 @@ const CreateAcademicFaculty = () => {
           onSubmit={onSubmit}
           resolver={zodResolver(academicFacultySchema)}
         >
-          <PHSelect
-            name="name"
-            label="Faculty"
-            options={facultyOptions}
-          ></PHSelect>
+          <PHInput type="text" name="name" label="Faculty"></PHInput>
           <Button htmlType="submit">Submit</Button>
         </PHForm>
       </Col>
