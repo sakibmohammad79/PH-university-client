@@ -1,4 +1,4 @@
-import { Button, Table, TableColumnsType, TableProps } from "antd";
+import { Button, Space, Table, TableColumnsType, TableProps } from "antd";
 import { useGetAllFacultiesQuery } from "../../../redux/features/admin/academicManagement.api";
 import { TAcademicSemester } from "../../../types/academicManagement.type";
 import { TQueryParam } from "../../../types";
@@ -50,10 +50,10 @@ const AcademicFaculty = () => {
       key: "action",
       render: () => {
         return (
-          <div>
+          <Space>
             <Button>Update</Button>
             <Button>Delete</Button>
-          </div>
+          </Space>
         );
       },
     },

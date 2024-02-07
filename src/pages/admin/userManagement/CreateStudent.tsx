@@ -1,7 +1,7 @@
-import { FieldValues, SubmitHandler } from "react-hook-form";
+import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
 import PHForm from "../../../components/form/PHForm";
 import PHInput from "../../../components/form/PHInput";
-import { Button, Col, Divider, Row } from "antd";
+import { Button, Col, Divider, Form, Input, Row } from "antd";
 import PHSelect from "../../../components/form/PHSelect";
 import { bloodGroupOptions, genderOptions } from "../../../constants/global";
 import PHDatePicker from "../../../components/form/PHDatePicker";
@@ -11,43 +11,43 @@ import {
 } from "../../../redux/features/admin/academicManagement.api";
 import { useAddStudentMutation } from "../../../redux/features/admin/userManagement.api";
 
-const studemDamiData = {
-  password: "student123",
-  student: {
-    name: {
-      firstName: "Md",
-      middleName: "Mohammad",
-      lastName: "Sakib",
-    },
-    gender: "male",
-    bloodGroup: "A+",
-    dateOfBirth: "2000-01-01",
+// const studemDamiData = {
+//   password: "student123",
+//   student: {
+//     name: {
+//       firstName: "Md",
+//       middleName: "Mohammad",
+//       lastName: "Sakib",
+//     },
+//     gender: "male",
+//     bloodGroup: "A+",
+//     dateOfBirth: "2000-01-01",
 
-    email: "student123@gmail.com",
-    contactNo: "1234567891",
-    emergencyContactNo: "9876543210",
-    presentAddress: "123 Main St, City",
-    permanentAddress: "456 Park Ave, Town",
+//     email: "student123@gmail.com",
+//     contactNo: "1234567891",
+//     emergencyContactNo: "9876543210",
+//     presentAddress: "123 Main St, City",
+//     permanentAddress: "456 Park Ave, Town",
 
-    guardian: {
-      fatherName: "John Doe Sr.",
-      fatherContactNo: "1111111111",
-      fatherOccupation: "Engineer",
-      motherName: "Jane Doe",
-      motherContactNo: "2222222222",
-      motherOccupation: "Doctor",
-    },
-    localGuardian: {
-      name: "Local Guardian",
-      contactNo: "3333333333",
-      occupation: "Teacher",
-      address: "789 Street, Local City",
-    },
+//     guardian: {
+//       fatherName: "John Doe Sr.",
+//       fatherContactNo: "1111111111",
+//       fatherOccupation: "Engineer",
+//       motherName: "Jane Doe",
+//       motherContactNo: "2222222222",
+//       motherOccupation: "Doctor",
+//     },
+//     localGuardian: {
+//       name: "Local Guardian",
+//       contactNo: "3333333333",
+//       occupation: "Teacher",
+//       address: "789 Street, Local City",
+//     },
 
-    admissionSemester: "65bb670f62ab4d107a950f0b",
-    academicDepartment: "65bb65c9f638c495497d9443",
-  },
-};
+//     admissionSemester: "65bb670f62ab4d107a950f0b",
+//     academicDepartment: "65bb65c9f638c495497d9443",
+//   },
+// };
 
 const studentDefaultValues = {
   name: {
@@ -59,7 +59,7 @@ const studentDefaultValues = {
   bloodGroup: "A+",
   // dateOfBirth: "2000-01-01",
 
-  email: "student123@gmail.com",
+  // email: "student1234@gmail.com",
   contactNo: "1234567891",
   emergencyContactNo: "9876543210",
   presentAddress: "123 Main St, City",
@@ -104,6 +104,7 @@ const CreateStudent = () => {
   console.log({ error, data });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    console.log(data);
     const studentData = {
       password: "student123",
       student: data,
@@ -111,6 +112,7 @@ const CreateStudent = () => {
 
     const formData = new FormData();
     formData.append("data", JSON.stringify(studentData));
+    formData.append("file", data.image);
     addStudent(formData);
   };
   return (
@@ -159,6 +161,22 @@ const CreateStudent = () => {
                 name="dateOfBirth"
                 label="Date Of Birth"
               ></PHDatePicker>
+            </Col>
+            <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
+              <Controller
+                name="image"
+                render={({ field: { onChange, value, ...field } }) => (
+                  <Form.Item label="Picture">
+                    <Input
+                      value={value?.fileName}
+                      {...field}
+                      type="file"
+                      onChange={(e) => onChange(e.target.files?.[0])}
+                      size="large"
+                    ></Input>
+                  </Form.Item>
+                )}
+              />
             </Col>
           </Row>
           <Divider>Contact Info</Divider>
