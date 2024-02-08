@@ -11,13 +11,18 @@ import AcademicSemester from "../pages/admin/academicManagement/AcademicSemester
 import StudentData from "../pages/admin/userManagement/student/studentData";
 import StudentDetails from "../pages/admin/userManagement/student/studentDetails";
 import StudentUpdate from "../pages/admin/userManagement/student/studentUpdate";
-
 import AdminData from "../pages/admin/userManagement/admin/AdminData";
 import FacultyDetails from "../pages/admin/userManagement/faculty/FacultyDetails";
-import FacultyUpdate from "../pages/admin/userManagement/faculty/facultyUpdate";
 import FacultyData from "../pages/admin/userManagement/faculty/FacultyData";
 import AdminDetails from "../pages/admin/userManagement/admin/AdminDetails";
 import AdminUpdate from "../pages/admin/userManagement/admin/AdminUpdate";
+import SemesterRegistration from "../pages/admin/courseManagement/SemesterRegistration";
+import FacultyUpdate from "../pages/admin/userManagement/faculty/FacultyUpdate";
+import RegisteredSemester from "../pages/admin/courseManagement/RegisteredSemester";
+import CreateCourse from "../pages/admin/courseManagement/CreateCourse";
+import Courses from "../pages/admin/courseManagement/Courses";
+import OfferCourse from "../pages/admin/courseManagement/OfferCourse";
+import OfferedCourse from "../pages/faculty/OfferedCourse";
 
 export const adminPaths = [
   {
@@ -119,6 +124,41 @@ export const adminPaths = [
       {
         path: "admin-data/update/:adminId",
         element: <AdminUpdate />,
+      },
+    ],
+  },
+  {
+    name: "Course Management",
+    children: [
+      {
+        name: "Semester Registration",
+        path: "semester-registration",
+        element: <SemesterRegistration />,
+      },
+      {
+        name: "Registered Semester",
+        path: "registered-semester",
+        element: <RegisteredSemester />,
+      },
+      {
+        name: "Create Course",
+        path: "create-course",
+        element: <CreateCourse />,
+      },
+      {
+        name: "Courses",
+        path: "courses",
+        element: <Courses />,
+      },
+      {
+        name: "Offer Course",
+        path: "offer-course",
+        element: <OfferCourse />,
+      },
+      {
+        name: "Offered Course",
+        path: "offered-course",
+        element: <OfferedCourse />,
       },
     ],
   },
