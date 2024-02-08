@@ -10,7 +10,7 @@ import { facultyDesignationOptions } from "../../../../constants/faculty";
 import { useAddFacultyMutation } from "../../../../redux/features/admin/userManagement.api";
 import { toast } from "sonner";
 import { TResponse } from "../../../../types";
-import { TFaculty } from "../../../../types/academicManagement.type";
+import { TFaculty } from "../../../../types/userManagement.type";
 
 const CreateFaculty = () => {
   //academicDeparment opetion create

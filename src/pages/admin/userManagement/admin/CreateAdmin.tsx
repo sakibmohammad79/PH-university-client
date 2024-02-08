@@ -8,33 +8,11 @@ import { bloodGroupOptions, genderOptions } from "../../../../constants/global";
 import { useAddAdminMutation } from "../../../../redux/features/admin/userManagement.api";
 import { toast } from "sonner";
 import { TResponse } from "../../../../types";
-import { TAdmin } from "../../../../types/academicManagement.type";
+
 import { adminDesignationOptions } from "../../../../constants/admin";
-
-const adminData = {
-  password: "admin123",
-  admin: {
-    designation: "Managerrr",
-    name: {
-      firstName: "John",
-      middleName: "M",
-      lastName: "Doe",
-    },
-    gender: "male",
-    dateOfBirth: "2001-09-19",
-    email: "admin1@gmail.com",
-    contactNo: "1234567890",
-    emergencyContactNo: "9876543210",
-    bloodGroup: "O+",
-    presentAddress: "123 Main Street, City",
-    permanentAddress: "456 Park Avenue, Town",
-
-    isDeleted: false,
-  },
-};
+import { TAdmin } from "../../../../types/userManagement.type";
 
 const CreateAdmin = () => {
-  //academicDeparment opetion create
   const [addAdmin, { error, data }] = useAddAdminMutation();
   console.log({ error, data });
 
