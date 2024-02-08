@@ -2,7 +2,6 @@ import { TAcademicSemester } from "./academicManagement.type";
 
 export type TSemesterRegistration = {
   _id: string;
-  name: string;
   academicSemester: TAcademicSemester;
   status: string;
   startDate: string;
