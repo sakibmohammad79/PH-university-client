@@ -1,9 +1,9 @@
 import { Button, Pagination, Space, Table } from "antd";
 import type { TableColumnsType, TableProps } from "antd";
 import { useState } from "react";
-import { TQueryParam } from "../../../types";
-import { useGetAllStudentsQuery } from "../../../redux/features/admin/userManagement.api";
-import { TStudent } from "../../../types/userManagement.type";
+import { TQueryParam } from "../../../../types";
+import { useGetAllStudentsQuery } from "../../../../redux/features/admin/userManagement.api";
+import { TStudent } from "../../../../types/userManagement.type";
 import { Link } from "react-router-dom";
 
 export type TTableData = Pick<

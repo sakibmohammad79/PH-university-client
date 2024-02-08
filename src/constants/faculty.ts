@@ -1,11 +1,13 @@
-// const facultyName = [
-//   "Faculty Of Web Development",
-//   "Faculty Of Programming",
-//   "Faculty of computer science and engineering",
-//   "Faculty of Business Administration",
-// ];
+const facultyDesignation = [
+  "Professor",
+  "Assistant Professor",
+  "Associate Professor",
+  "Lecturer",
+];
 
-// export const facultyOptions = facultyName.map((faculty) => ({
-//   label: faculty,
-//   value: faculty,
-// }));
+export const facultyDesignationOptions = facultyDesignation.map(
+  (designation) => ({
+    label: designation,
+    value: designation,
+  })
+);

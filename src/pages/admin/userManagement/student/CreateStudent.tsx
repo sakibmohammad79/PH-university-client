@@ -1,53 +1,18 @@
 import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
-import PHForm from "../../../components/form/PHForm";
-import PHInput from "../../../components/form/PHInput";
+import PHForm from "../../../../components/form/PHForm";
+import PHInput from "../../../../components/form/PHInput";
 import { Button, Col, Divider, Form, Input, Row } from "antd";
-import PHSelect from "../../../components/form/PHSelect";
-import { bloodGroupOptions, genderOptions } from "../../../constants/global";
-import PHDatePicker from "../../../components/form/PHDatePicker";
+import PHSelect from "../../../../components/form/PHSelect";
+import { bloodGroupOptions, genderOptions } from "../../../../constants/global";
+import PHDatePicker from "../../../../components/form/PHDatePicker";
 import {
   useGetAllAcademicSemestersQuery,
   useGetAllDepartmentsQuery,
-} from "../../../redux/features/admin/academicManagement.api";
-import { useAddStudentMutation } from "../../../redux/features/admin/userManagement.api";
-
-// const studemDamiData = {
-//   password: "student123",
-//   student: {
-//     name: {
-//       firstName: "Md",
-//       middleName: "Mohammad",
-//       lastName: "Sakib",
-//     },
-//     gender: "male",
-//     bloodGroup: "A+",
-//     dateOfBirth: "2000-01-01",
-
-//     email: "student123@gmail.com",
-//     contactNo: "1234567891",
-//     emergencyContactNo: "9876543210",
-//     presentAddress: "123 Main St, City",
-//     permanentAddress: "456 Park Ave, Town",
-
-//     guardian: {
-//       fatherName: "John Doe Sr.",
-//       fatherContactNo: "1111111111",
-//       fatherOccupation: "Engineer",
-//       motherName: "Jane Doe",
-//       motherContactNo: "2222222222",
-//       motherOccupation: "Doctor",
-//     },
-//     localGuardian: {
-//       name: "Local Guardian",
-//       contactNo: "3333333333",
-//       occupation: "Teacher",
-//       address: "789 Street, Local City",
-//     },
-
-//     admissionSemester: "65bb670f62ab4d107a950f0b",
-//     academicDepartment: "65bb65c9f638c495497d9443",
-//   },
-// };
+} from "../../../../redux/features/admin/academicManagement.api";
+import { useAddStudentMutation } from "../../../../redux/features/admin/userManagement.api";
+import { TStudent } from "../../../../types/userManagement.type";
+import { toast } from "sonner";
+import { TResponse } from "../../../../types";
 
 const studentDefaultValues = {
   name: {
@@ -103,8 +68,9 @@ const CreateStudent = () => {
   const [addStudent, { error, data }] = useAddStudentMutation();
   console.log({ error, data });
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    const toastId = toast.loading("Createing...");
+
     const studentData = {
       password: "student123",
       student: data,
@@ -113,8 +79,22 @@ const CreateStudent = () => {
     const formData = new FormData();
     formData.append("data", JSON.stringify(studentData));
     formData.append("file", data.image);
-    addStudent(formData);
+
+    try {
+      const res = (await addStudent(formData)) as TResponse<TStudent>;
+      if (res.error) {
+        toast.error(res?.error?.data?.message, { id: toastId, duration: 3000 });
+      } else {
+        toast.success("Student created successfully!", {
+          id: toastId,
+          duration: 3000,
+        });
+      }
+    } catch (error) {
+      toast.error("Something went wrong!", { id: toastId, duration: 3000 });
+    }
   };
+
   return (
     <Row>
       <Col span={24}>

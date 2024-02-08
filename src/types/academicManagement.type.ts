@@ -30,3 +30,28 @@ export type TAcademicDepartment = {
   createdAt: string;
   updatedAt: string;
 };
+
+export type TFaculty = {
+  faculty: TFacultyInfo;
+};
+
+export type TFacultyInfo = {
+  designation: string;
+  name: TName;
+  gender: string;
+  dateOfBirth: string;
+  email: string;
+  contactNo: string;
+  emergencyContactNo: string;
+  bloodGroup: string;
+  presentAddress: string;
+  permanentAddress: string;
+  academicDepartment: string;
+  isDeleted: boolean;
+};
+
+export type TName = {
+  firstName: string;
+  middleName: string;
+  lastName: string;
+};

@@ -22,7 +22,7 @@ export const monthOptions = monthNames.map((month) => ({
   label: month,
 }));
 export const genderOptions = genderName.map((gender) => ({
-  value: gender,
+  value: gender.toLowerCase(),
   label: gender,
 }));
 export const bloodGroupOptions = bloodGroup.map((group) => ({

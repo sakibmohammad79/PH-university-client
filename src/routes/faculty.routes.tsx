@@ -1,4 +1,4 @@
-import CreateStudent from "../pages/admin/userManagement/CreateStudent";
+import CreateStudent from "../pages/admin/userManagement/student/CreateStudent";
 import FacultyDashboard from "../pages/faculty/FacultyDashboard";
 import OfferedCourse from "../pages/faculty/OfferedCourse";
 

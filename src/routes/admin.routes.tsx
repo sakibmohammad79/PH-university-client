@@ -1,16 +1,18 @@
 import AdminDashboard from "../pages/admin/AdminDashboard";
-import CreateAdmin from "../pages/admin/userManagement/CreateAdmin";
-import CreateFaculty from "../pages/admin/userManagement/CreateFaculty";
-import CreateStudent from "../pages/admin/userManagement/CreateStudent";
+import CreateAdmin from "../pages/admin/userManagement/admin/CreateAdmin";
+import CreateFaculty from "../pages/admin/userManagement/faculty/CreateFaculty";
+import CreateStudent from "../pages/admin/userManagement/student/CreateStudent";
 import AcademicDepartment from "../pages/admin/academicManagement/AcademicDepartment";
 import AcademicFaculty from "../pages/admin/academicManagement/AcademicFaculty";
 import CreateAcademicDepartment from "../pages/admin/academicManagement/CreateAcademicDepartment";
 import CreateAcademicFaculty from "../pages/admin/academicManagement/CreateAcademicFaculty";
 import CreateAcademicSemseter from "../pages/admin/academicManagement/CreateAcademicSemseter";
 import AcademicSemester from "../pages/admin/academicManagement/AcademicSemester";
-import StudentData from "../pages/admin/userManagement/studentData";
-import StudentDetails from "../pages/admin/userManagement/studentDetails";
-import StudentUpdate from "../pages/admin/userManagement/studentUpdate";
+import StudentData from "../pages/admin/userManagement/student/studentData";
+import StudentDetails from "../pages/admin/userManagement/student/studentDetails";
+import StudentUpdate from "../pages/admin/userManagement/student/studentUpdate";
+import FacultyData from "../pages/admin/userManagement/faculty/facultyData";
+import AdminData from "../pages/admin/userManagement/admin/AdminData";
 
 export const adminPaths = [
   {
@@ -56,6 +58,7 @@ export const adminPaths = [
   {
     name: "User Management",
     children: [
+      //student route
       {
         name: "Create Student",
         path: "create-student",
@@ -74,15 +77,27 @@ export const adminPaths = [
         path: "student-data/update/:studentId",
         element: <StudentUpdate />,
       },
+      //faculty route
       {
         name: "Create Faculty",
         path: "create-faculty",
         element: <CreateFaculty />,
       },
       {
+        name: "All Faculty",
+        path: "faculty-data",
+        element: <FacultyData />,
+      },
+      //admin route
+      {
         name: "Create Admin",
         path: "create-admin",
         element: <CreateAdmin />,
+      },
+      {
+        name: "All Admin",
+        path: "admin-data",
+        element: <AdminData />,
       },
     ],
   },
