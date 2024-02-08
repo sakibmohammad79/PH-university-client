@@ -55,3 +55,26 @@ export type TName = {
   middleName: string;
   lastName: string;
 };
+
+//admin
+
+export type TAdmin = {
+  admin: TAdminInfo;
+};
+export type TAdminInfo = {
+  designation: string;
+  name: TAdminName;
+  gender: string;
+  dateOfBirth: string;
+  email: string;
+  contactNo: string;
+  emergencyContactNo: string;
+  bloodGroup: string;
+  presentAddress: string;
+  permanentAddress: string;
+};
+export type TAdminName = {
+  firstName: string;
+  middleName: string;
+  lastName: string;
+};

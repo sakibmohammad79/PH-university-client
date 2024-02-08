@@ -60,6 +60,34 @@ const userManagement = baseApi.injectEndpoints({
         body: facultyData,
       }),
     }),
+    getAllAdmins: builder.query({
+      query: (args) => {
+        const params = new URLSearchParams();
+        if (args) {
+          args?.forEach((item: TQueryParam) => {
+            params.append(item.name, item.value as string);
+          });
+        }
+        return {
+          url: "/admins",
+          method: "GET",
+          params: params,
+        };
+      },
+      transformResponse: (response: TResponseRedux<TStudent[]>) => {
+        return {
+          meta: response.meta,
+          data: response.data,
+        };
+      },
+    }),
+    addAdmin: builder.mutation({
+      query: (adminData) => ({
+        url: "/users/create-admin",
+        method: "POST",
+        body: adminData,
+      }),
+    }),
   }),
 });
 
@@ -68,4 +96,6 @@ export const {
   useGetAllStudentsQuery,
   useGetAllFacultiesQuery,
   useAddFacultyMutation,
+  useGetAllAdminsQuery,
+  useAddAdminMutation,
 } = userManagement;
