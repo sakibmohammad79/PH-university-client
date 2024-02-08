@@ -11,8 +11,13 @@ import AcademicSemester from "../pages/admin/academicManagement/AcademicSemester
 import StudentData from "../pages/admin/userManagement/student/studentData";
 import StudentDetails from "../pages/admin/userManagement/student/studentDetails";
 import StudentUpdate from "../pages/admin/userManagement/student/studentUpdate";
-import FacultyData from "../pages/admin/userManagement/faculty/facultyData";
+
 import AdminData from "../pages/admin/userManagement/admin/AdminData";
+import FacultyDetails from "../pages/admin/userManagement/faculty/FacultyDetails";
+import FacultyUpdate from "../pages/admin/userManagement/faculty/facultyUpdate";
+import FacultyData from "../pages/admin/userManagement/faculty/FacultyData";
+import AdminDetails from "../pages/admin/userManagement/admin/AdminDetails";
+import AdminUpdate from "../pages/admin/userManagement/admin/AdminUpdate";
 
 export const adminPaths = [
   {
@@ -88,6 +93,14 @@ export const adminPaths = [
         path: "faculty-data",
         element: <FacultyData />,
       },
+      {
+        path: "faculty-data/details/:facultyId",
+        element: <FacultyDetails />,
+      },
+      {
+        path: "faculty-data/update/:facultyId",
+        element: <FacultyUpdate />,
+      },
       //admin route
       {
         name: "Create Admin",
@@ -98,6 +111,14 @@ export const adminPaths = [
         name: "All Admin",
         path: "admin-data",
         element: <AdminData />,
+      },
+      {
+        path: "admin-data/details/:adminId",
+        element: <AdminDetails />,
+      },
+      {
+        path: "admin-data/update/:adminId",
+        element: <AdminUpdate />,
       },
     ],
   },

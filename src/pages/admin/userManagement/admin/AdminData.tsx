@@ -4,6 +4,7 @@ import { useState } from "react";
 import { TQueryParam } from "../../../../types";
 import { useGetAllAdminsQuery } from "../../../../redux/features/admin/userManagement.api";
 import { TAdmin } from "../../../../types/userManagement.type";
+import { Link } from "react-router-dom";
 
 export type TTableData = Pick<
   TAdmin,
@@ -55,15 +56,15 @@ const AdminData = () => {
     {
       title: "Action",
       key: "action",
-      render: () => {
+      render: (item) => {
         return (
           <Space>
-            {/* <Link to={`/admin/student-data/details/${item?.key}`}> */}
-            <Button>Details</Button>
-            {/* </Link> */}
-            {/* <Link to={`/admin/student-data/update/${item?.key}`}> */}
-            <Button>Update</Button>
-            {/* </Link> */}
+            <Link to={`/admin/admin-data/details/${item?.key}`}>
+              <Button>Details</Button>
+            </Link>
+            <Link to={`/admin/admin-data/update/${item?.key}`}>
+              <Button>Update</Button>
+            </Link>
             <Button>Block</Button>
           </Space>
         );
