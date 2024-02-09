@@ -1,14 +1,15 @@
 import { Button, Space, Table, TableColumnsType, TableProps } from "antd";
-import { useGetAllFacultiesQuery } from "../../../redux/features/admin/academicManagement.api";
 import { TAcademicSemester } from "../../../types/academicManagement.type";
 import { TQueryParam } from "../../../types";
 import { useState } from "react";
+import { useGetAllAcademicFacultyQuery } from "../../../redux/features/admin/academicManagement.api";
 
 export type TFacultyTableData = Pick<TAcademicSemester, "name" | "_id">;
 
 const AcademicFaculty = () => {
   const [params, setParams] = useState<TQueryParam[] | undefined>(undefined);
-  const { data: facultyData, isFetching } = useGetAllFacultiesQuery(params);
+  const { data: facultyData, isFetching } =
+    useGetAllAcademicFacultyQuery(params);
 
   const tableData = facultyData?.data?.map(({ _id, name }) => ({
     name,

@@ -5,7 +5,7 @@ import PHSelect from "../../../components/form/PHSelect";
 
 import {
   useAddAcademicDepartmentMutation,
-  useGetAllFacultiesQuery,
+  useGetAllAcademicFacultyQuery,
 } from "../../../redux/features/admin/academicManagement.api";
 import { toast } from "sonner";
 import { TResponse } from "../../../types";
@@ -15,7 +15,7 @@ import { academicDepartmentSchema } from "../../../schemas/academicDepartment.sc
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const CreateAcademicDepartment = () => {
-  const { data: facultyData } = useGetAllFacultiesQuery(undefined);
+  const { data: facultyData } = useGetAllAcademicFacultyQuery(undefined);
 
   const [addAcademicDepartment] = useAddAcademicDepartmentMutation();
 

@@ -36,7 +36,7 @@ const academicManagementApi = baseApi.injectEndpoints({
         body: semesterData,
       }),
     }),
-    getAllFaculties: builder.query({
+    getAllAcademicFaculty: builder.query({
       query: (args) => {
         const params = new URLSearchParams();
         if (args) {
@@ -103,7 +103,7 @@ const academicManagementApi = baseApi.injectEndpoints({
 export const {
   useGetAllAcademicSemestersQuery,
   useAddAcademicSemesterMutation,
-  useGetAllFacultiesQuery,
+  useGetAllAcademicFacultyQuery,
   useAddAcademicFacultyMutation,
   useGetAllDepartmentsQuery,
   useAddAcademicDepartmentMutation,
