@@ -18,6 +18,7 @@ import PHSelectWithWatch from "../../../components/form/PHSelectWithWatch";
 import { useState } from "react";
 import { toast } from "sonner";
 import { TResponse } from "../../../types";
+import PHTimePicker from "../../../components/form/PHTimePicker";
 
 const OfferCourse = () => {
   const [courseId, setCourseId] = useState("");
@@ -145,8 +146,8 @@ const OfferCourse = () => {
             label="Days"
             options={dayNameOptions}
           ></PHSelect>
-          <PHInput type="time" name="startTime" label="Start Time"></PHInput>
-          <PHInput type="time" name="endTime" label="End Time"></PHInput>
+          <PHTimePicker name="startTime" label="Start Time"></PHTimePicker>
+          <PHTimePicker name="endTime" label="End Time"></PHTimePicker>
           <Button htmlType="submit">Submit</Button>
         </PHForm>
       </Col>
