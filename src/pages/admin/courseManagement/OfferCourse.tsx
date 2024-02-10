@@ -25,8 +25,8 @@ const OfferCourse = () => {
 
   const [addOfferCouse, { error, data }] = useAddOfferCourseMutation();
   console.log({ data, error });
-  const { data: singleCourseFaculties } =
-    useGetSingleCourseFacultiesQuery(courseId);
+  const { data: singleCourseFaculties, isFetching: isFacultiesFeching } =
+    useGetSingleCourseFacultiesQuery(courseId, { skip: !courseId });
 
   const { data: registeredSemesterData } =
     useGetAllRegisteredSemestersQuery(undefined);
@@ -128,7 +128,7 @@ const OfferCourse = () => {
             options={courseOptions}
           ></PHSelectWithWatch>
           <PHSelect
-            disabled={!courseId}
+            disabled={!courseId || isFacultiesFeching}
             name="faculty"
             label="Course Faculty"
             options={facultyOptions}
